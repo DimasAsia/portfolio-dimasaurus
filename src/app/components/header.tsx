@@ -5,8 +5,9 @@ export default function Header() {
     return (
         <header className="border-b bg-white text-black">
             <nav className="max-w-6xl mx-auto px-4 py-4 flex gap-6">
+                <span className="font-bold">Galih Dimas Prastowo</span>
                 <Link href="/" className="text-left"><CommandLineIcon className="size-6" /></Link>
-                <Link href="/" className="text-left">DevPortfolio | Galih Dimas Prastowo</Link>
+                <Link href="/" className="text-left">DevPortfolio | </Link>
                 <Link href="/app" className="text-end">Home</Link>
                 <Link href="/about" className="text-end">About</Link>
                 <Link href="/about" className="text-end">Resume</Link>
