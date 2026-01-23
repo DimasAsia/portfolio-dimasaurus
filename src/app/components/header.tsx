@@ -9,6 +9,8 @@ export default function Header() {
                 <Link href="/" className="text-left">DevPortfolio | Galih Dimas Prastowo</Link>
                 <Link href="/app" className="text-end">Home</Link>
                 <Link href="/about" className="text-end">About</Link>
+                <Link href="/about" className="text-end">Resume</Link>
+                <Link href="/about" className="text-end">Resume</Link>
             </nav>
         </header>
     )
