@@ -1,54 +1,93 @@
+"use client";
+
 import Image from "next/image";
+import { scrollToSection } from "../lib/scrollToSsction";
+import { motion } from "framer-motion";
 
 export default function Hero() {
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
   return (
-    <section
-      id="home"
-      className="mx-auto max-w-6xl px-4 py-10"
-    >
+    <section id="home" className="mx-auto max-w-6xl px-4 py-10">
       <div className="grid items-center gap-16 md:grid-cols-2">
-
         {/* ===== LEFT : TEXT ===== */}
-        <div className="flex flex-col gap-6">
-          <span className="text-sm font-medium text-green-600">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="flex flex-col gap-6"
+        >
+          <motion.span
+            variants={item}
+            className="text-sm font-Roboto uppercase font-medium text-green-600"
+          >
             &gt; Hello World!
-          </span>
+          </motion.span>
 
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          <motion.h1
+            variants={item}
+            className="text-4xl font-bold tracking-tight sm:text-5xl"
+          >
             I'm Galih Dimas Prastowo
-          </h1>
+          </motion.h1>
 
-          <h2 className="text-3xl font-semibold text-gray-500 sm:text-4xl">
+          <motion.h2
+            variants={item}
+            className="text-3xl font-semibold text-gray-500 sm:text-4xl"
+          >
             Fullstack Developer
-          </h2>
+          </motion.h2>
 
-          <p className="max-w-xl text-gray-600 leading-relaxed">
+          <motion.p
+            variants={item}
+            className="max-w-xl text-gray-600 leading-relaxed"
+          >
             I build modern, scalable web applications with clean architecture,
             performance-focused design, and maintainable code.
-          </p>
+          </motion.p>
 
           {/* CTA */}
-          <div className="flex flex-wrap gap-4 pt-6">
-            <a
-              href="#projects"
+          <motion.div variants={item} className="flex flex-wrap gap-4 pt-6">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => scrollToSection("projects")}
               className="rounded-md bg-black px-6 py-3 text-sm font-medium text-white transition hover:bg-gray-800"
             >
               View Projects
-            </a>
+            </motion.button>
 
-            <a
-              href="#contact"
+            <motion.button
+              onClick={() => scrollToSection("contact")}
               className="rounded-md border px-6 py-3 text-sm font-medium transition hover:bg-black hover:text-white"
             >
               Contact Me
-            </a>
-          </div>
-        </div>
+            </motion.button>
+          </motion.div>
+        </motion.div>
 
         {/* ===== RIGHT : IMAGE + SHAPE ===== */}
-        <div className="flex justify-center md:justify-end">
+        <motion.div
+          variants={container}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex justify-center md:justify-end"
+        >
           <div className="relative h-82 w-82 sm:h-80 sm:w-80">
-
             {/* SHAPE BACKGROUND */}
             <div
               className="
@@ -70,8 +109,7 @@ export default function Hero() {
               className="rounded-2xl object-cover shadow-lg"
             />
           </div>
-        </div>
-
+        </motion.div>
       </div>
     </section>
   );

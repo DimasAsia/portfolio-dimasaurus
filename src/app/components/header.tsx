@@ -5,7 +5,7 @@ import { useState } from "react";
 import { scrollToSection } from "../lib/scrollToSsction";
 import { useScrollSpy } from "../hooks/useScrollSpy";
 
-const sections = ["home", "about", "experience", "project", "contact"];
+const sections = ["home", "about", "experience", "projects", "contact"];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -14,7 +14,7 @@ export default function Header() {
     scrollToSection(id);
     setOpen(false); // auto close mobile menu
   };
-  
+
   const activeId = useScrollSpy(sections);
 
   return (
@@ -26,26 +26,39 @@ export default function Header() {
           className="flex items-center gap-3 text-black"
         >
           <CommandLineIcon className="h-7 w-7" />
-          <span className="font-medium">
-            DevPortfolio | Galih Dimas Prastowo
-          </span>
+          <span className="font-medium">DevPortfolio | IT Engineer</span>
         </button>
 
         {/* Desktop Menu */}
         <div className="hidden items-center gap-7 md:flex">
-          <button onClick={() => handleScroll("home")} className={'nav-link ${activeId === "home" ? "text-indigo-600 font-semi-bold" : ""}'}>
+          <button
+            onClick={() => handleScroll("home")}
+            className={`nav-link ${activeId === "home" ? " active text-indigo-600 font-semi-bold" : ""}`}
+          >
             Home
           </button>
-          <button onClick={() => handleScroll("about")} className={'nav-link ${activeId === "about" ? "text-indigo-600 font-semi-bold" : ""}'}>
+          <button
+            onClick={() => handleScroll("about")}
+            className={`nav-link ${activeId === "about" ? " active text-indigo-600 font-semi-bold" : ""}`}
+          >
             About
           </button>
-          <button onClick={() => handleScroll("experience")} className={'nav-link ${activeId === "experience" ? "text-indigo-600 font-semi-bold" : ""}'}>
+          <button
+            onClick={() => handleScroll("experience")}
+            className={`nav-link ${activeId === "experience" ? "active text-indigo-600 font-semi-bold" : ""}`}
+          >
             Experience
-            </button>
-          <button onClick={() => handleScroll("projects")} className={'nav-link ${activeId === "projects" ? "text-indigo-600 font-semi-bold" : ""}'}>
+          </button>
+          <button
+            onClick={() => handleScroll("projects")}
+            className={`nav-link ${activeId === "projects" ? "active text-indigo-600 font-semi-bold" : ""}`}
+          >
             Projects
           </button>
-          <button onClick={() => handleScroll("contact")} className={'nav-link ${activeId === "contact" ? "text-indigo-600 font-semi-bold" : ""}'}>
+          <button
+            onClick={() => handleScroll("contact")}
+            className={`nav-link ${activeId === "contact" ? "active text-indigo-600 font-semi-bold" : ""}`}
+          >
             Contact
           </button>
 
@@ -72,19 +85,44 @@ export default function Header() {
       {open && (
         <div className="border-t bg-white md:hidden">
           <div className="flex flex-col gap-4 px-4 py-6">
-            <button onClick={() => handleScroll("home")} className={'nav-link ${activeId === "home" ? "text-indigo-600 font-semi-bold" : ""}'}>
+            <button
+              onClick={() => handleScroll("home")}
+              className={
+                'nav-link ${activeId === "home" ? "text-indigo-600 font-semi-bold" : ""}'
+              }
+            >
               Home
             </button>
-            <button onClick={() => handleScroll("about")} className={'nav-link ${activeId === "about" ? "text-indigo-600 font-semi-bold" : ""}'}>
+            <button
+              onClick={() => handleScroll("about")}
+              className={
+                'nav-link ${activeId === "about" ? "text-indigo-600 font-semi-bold" : ""}'
+              }
+            >
               About
             </button>
-            <button onClick={() => handleScroll("experience")} className={'nav-link ${activeId === "experience" ? "text-indigo-600 font-semi-bold" : ""}'}>
+            <button
+              onClick={() => handleScroll("experience")}
+              className={
+                'nav-link ${activeId === "experience" ? "text-indigo-600 font-semi-bold" : ""}'
+              }
+            >
               Experience
             </button>
-            <button onClick={() => handleScroll("projects")} className={'nav-link ${activeId === "projects" ? "text-indigo-600 font-semi-bold" : ""}'}>
+            <button
+              onClick={() => handleScroll("projects")}
+              className={
+                'nav-link ${activeId === "projects" ? "text-indigo-600 font-semi-bold" : ""}'
+              }
+            >
               Projects
             </button>
-            <button onClick={() => handleScroll("contact")} className={'nav-link ${activeId === "contact" ? "text-indigo-600 font-semi-bold" : ""}'}>
+            <button
+              onClick={() => handleScroll("contact")}
+              className={
+                'nav-link ${activeId === "contact" ? "text-indigo-600 font-semi-bold" : ""}'
+              }
+            >
               Contact
             </button>
 
