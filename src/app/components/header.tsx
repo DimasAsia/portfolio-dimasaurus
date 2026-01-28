@@ -1,45 +1,103 @@
 "use client";
 
-import Link from "next/link";
 import { CommandLineIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { scrollToSection } from "../lib/scrollToSsction";
+import { useScrollSpy } from "../hooks/useScrollSpy";
+
+const sections = ["home", "about", "experience", "project", "contact"];
 
 export default function Header() {
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    return (
-        <header className="sticky top-0 z-50 bg-white/80 background-blur border-b">
-            <nav className="max-w-8xl mx-auto px-4 py-4 h-16 flex items-center justify-between">
-                {/*Logo*/}
-                <div className="text-lg flex gap-4 text-black">
-                    <Link href="/" className="text-left px-1"><CommandLineIcon className="size-7" /></Link>
-                    <Link href="/" className="text-left">DevPortfolio | Galih Dimas Prastowo </Link>
-                </div>
-                <div className="hidden md:flex items-center gap-7 ">
-                    <Link href="/app" className="nav-link">Home</Link>
-                    <Link href="/about" className="nav-link">About</Link>
-                    <Link href="/app" className="nav-link">Experience</Link>
-                    <Link href="/about" className="nav-link">Portfolio</Link>
-                    <Link href="/about" className="resume-btn">Resume</Link>
-                </div>
+  const handleScroll = (id: string) => {
+    scrollToSection(id);
+    setOpen(false); // auto close mobile menu
+  };
+  
+  const activeId = useScrollSpy(sections);
 
-                {/*Mobile Hamburger*/}
-                <button onClick={() => setOpen(!open)} className="md:hidden text-2xl text-black hover:text-indigo-600" aria-label="Toggle-menu">
-                    ☰
-                </button>
-            </nav>
-            {/*Mobile menu*/}
-            {open && (
-                <div className="md:hidden border-t bg-white">
-                    <div className="flex flex-col px-4 py-4 gap-4">
-                        <Link onClick={() => setOpen(false)} href="/app" className="nav-link">Home</Link>
-                        <Link onClick={() => setOpen(false)} href="/about" className="nav-link">About</Link>
-                        <Link onClick={() => setOpen(false)} href="/app" className="nav-link">Experience</Link>
-                        <Link onClick={() => setOpen(false)} href="/about" className="nav-link">Portfolio</Link>
-                        <Link href="/about" className="resume-btn">Resume</Link>
-                    </div>
-                </div>
-            )}
-        </header>
-    )
+  return (
+    <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+        {/* Logo */}
+        <button
+          onClick={() => handleScroll("home")}
+          className="flex items-center gap-3 text-black"
+        >
+          <CommandLineIcon className="h-7 w-7" />
+          <span className="font-medium">
+            DevPortfolio | Galih Dimas Prastowo
+          </span>
+        </button>
+
+        {/* Desktop Menu */}
+        <div className="hidden items-center gap-7 md:flex">
+          <button onClick={() => handleScroll("home")} className={'nav-link ${activeId === "home" ? "text-indigo-600 font-semi-bold" : ""}'}>
+            Home
+          </button>
+          <button onClick={() => handleScroll("about")} className={'nav-link ${activeId === "about" ? "text-indigo-600 font-semi-bold" : ""}'}>
+            About
+          </button>
+          <button onClick={() => handleScroll("experience")} className={'nav-link ${activeId === "experience" ? "text-indigo-600 font-semi-bold" : ""}'}>
+            Experience
+            </button>
+          <button onClick={() => handleScroll("projects")} className={'nav-link ${activeId === "projects" ? "text-indigo-600 font-semi-bold" : ""}'}>
+            Projects
+          </button>
+          <button onClick={() => handleScroll("contact")} className={'nav-link ${activeId === "contact" ? "text-indigo-600 font-semi-bold" : ""}'}>
+            Contact
+          </button>
+
+          <a
+            href="/CV-Galih-Dimas-Prastowo.pdf"
+            download
+            className="resume-btn"
+          >
+            Resume
+          </a>
+        </div>
+
+        {/* Mobile Hamburger */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="text-2xl text-black md:hidden"
+          aria-label="Toggle menu"
+        >
+          ☰
+        </button>
+      </nav>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="border-t bg-white md:hidden">
+          <div className="flex flex-col gap-4 px-4 py-6">
+            <button onClick={() => handleScroll("home")} className={'nav-link ${activeId === "home" ? "text-indigo-600 font-semi-bold" : ""}'}>
+              Home
+            </button>
+            <button onClick={() => handleScroll("about")} className={'nav-link ${activeId === "about" ? "text-indigo-600 font-semi-bold" : ""}'}>
+              About
+            </button>
+            <button onClick={() => handleScroll("experience")} className={'nav-link ${activeId === "experience" ? "text-indigo-600 font-semi-bold" : ""}'}>
+              Experience
+            </button>
+            <button onClick={() => handleScroll("projects")} className={'nav-link ${activeId === "projects" ? "text-indigo-600 font-semi-bold" : ""}'}>
+              Projects
+            </button>
+            <button onClick={() => handleScroll("contact")} className={'nav-link ${activeId === "contact" ? "text-indigo-600 font-semi-bold" : ""}'}>
+              Contact
+            </button>
+
+            <a
+              href="/CV-Galih-Dimas-Prastowo.pdf"
+              download
+              className="resume-btn"
+            >
+              Resume
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
+  );
 }

@@ -1,9 +1,14 @@
 import Image from "next/image";
+import Hero from "./components/hero";
+import Contact from "./components/contact";
+import Projects from "./components/project";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      
-    </div>
+    <>
+    <Hero/>
+    <Projects/>
+    <Contact/>
+    </>
   );
 }
