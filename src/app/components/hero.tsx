@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { scrollToSection } from "../lib/scrollToSsction";
+import { scrollToSection } from "../lib/scrollToSection";
 import { motion } from "framer-motion";
 
 export default function Hero() {

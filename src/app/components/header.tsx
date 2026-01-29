@@ -1,28 +1,58 @@
 "use client";
 
 import { CommandLineIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
-import { scrollToSection } from "../lib/scrollToSsction";
+import { useEffect, useState } from "react";
+import { scrollToSection } from "../lib/scrollToSection";
 import { useScrollSpy } from "../hooks/useScrollSpy";
+import { usePathname, useRouter } from "next/navigation";
+import { navigateToSection } from "../lib/navigateToSection";
 
 const sections = ["home", "about", "experience", "projects", "contact"];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const activeId = useScrollSpy(sections);
+  const [hash, setHash] = useState("");
+  const [isHashActive, setIsHashActive] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const current = isHashActive ? hash: activeId
 
-  const handleScroll = (id: string) => {
-    scrollToSection(id);
-    setOpen(false); // auto close mobile menu
+
+  const handleNav = (id: string) => {
+    navigateToSection(router, pathname, id);
   };
 
-  const activeId = useScrollSpy(sections);
+  useEffect(()=> {
+    const onHashChange = () => {
+      const h = window.location.hash.replace("#", "");
+      setHash(h);
+      setIsHashActive(!!h);
+    };
+
+    onHashChange();
+    window.addEventListener("hashchange", onHashChange);
+
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
+  useEffect(() => {
+    if (!isHashActive) return;
+
+    const timer =setTimeout(() => {
+      setIsHashActive(false);
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, [isHashActive]);
 
   return (
     <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         {/* Logo */}
         <button
-          onClick={() => handleScroll("home")}
+          onClick={() => handleNav("home")}
           className="flex items-center gap-3 text-black"
         >
           <CommandLineIcon className="h-7 w-7" />
@@ -32,32 +62,32 @@ export default function Header() {
         {/* Desktop Menu */}
         <div className="hidden items-center gap-7 md:flex">
           <button
-            onClick={() => handleScroll("home")}
-            className={`nav-link ${activeId === "home" ? " active text-indigo-600 font-semi-bold" : ""}`}
+            onClick={() => handleNav("home")}
+            className={`nav-link ${isHome && current === "home" ? " active text-indigo-600 font-semi-bold" : ""}`}
           >
             Home
           </button>
           <button
-            onClick={() => handleScroll("about")}
-            className={`nav-link ${activeId === "about" ? " active text-indigo-600 font-semi-bold" : ""}`}
+            onClick={() => handleNav("about")}
+            className={`nav-link ${current === "about" ? " active text-indigo-600 font-semi-bold" : ""}`}
           >
             About
           </button>
           <button
-            onClick={() => handleScroll("experience")}
-            className={`nav-link ${activeId === "experience" ? "active text-indigo-600 font-semi-bold" : ""}`}
+            onClick={() => handleNav("experience")}
+            className={`nav-link ${current === "experience" ? "active text-indigo-600 font-semi-bold" : ""}`}
           >
             Experience
           </button>
           <button
-            onClick={() => handleScroll("projects")}
-            className={`nav-link ${activeId === "projects" ? "active text-indigo-600 font-semi-bold" : ""}`}
+            onClick={() => handleNav("projects")}
+            className={`nav-link ${current === "projects" ? "active text-indigo-600 font-semi-bold" : ""}`}
           >
             Projects
           </button>
           <button
-            onClick={() => handleScroll("contact")}
-            className={`nav-link ${activeId === "contact" ? "active text-indigo-600 font-semi-bold" : ""}`}
+            onClick={() => handleNav("contact")}
+            className={`nav-link ${current === "contact" ? "active text-indigo-600 font-semi-bold" : ""}`}
           >
             Contact
           </button>
@@ -86,41 +116,41 @@ export default function Header() {
         <div className="border-t bg-white md:hidden">
           <div className="flex flex-col gap-4 px-4 py-6">
             <button
-              onClick={() => handleScroll("home")}
+              onClick={() => handleNav("home")}
               className={
-                'nav-link ${activeId === "home" ? "text-indigo-600 font-semi-bold" : ""}'
+                `nav-link ${isHome && current === "home" ? "text-indigo-600 font-semi-bold" : ""}`
               }
             >
               Home
             </button>
             <button
-              onClick={() => handleScroll("about")}
+              onClick={() => handleNav("about")}
               className={
-                'nav-link ${activeId === "about" ? "text-indigo-600 font-semi-bold" : ""}'
+                `nav-link ${current === "about" ? "text-indigo-600 font-semi-bold" : ""}`
               }
             >
               About
             </button>
             <button
-              onClick={() => handleScroll("experience")}
+              onClick={() => handleNav("experience")}
               className={
-                'nav-link ${activeId === "experience" ? "text-indigo-600 font-semi-bold" : ""}'
+                `nav-link ${current === "experience" ? "text-indigo-600 font-semi-bold" : ""}`
               }
             >
               Experience
             </button>
             <button
-              onClick={() => handleScroll("projects")}
+              onClick={() => handleNav("projects")}
               className={
-                'nav-link ${activeId === "projects" ? "text-indigo-600 font-semi-bold" : ""}'
+                `nav-link ${current === "projects" ? "text-indigo-600 font-semi-bold" : ""}`
               }
             >
               Projects
             </button>
             <button
-              onClick={() => handleScroll("contact")}
+              onClick={() => handleNav("contact")}
               className={
-                'nav-link ${activeId === "contact" ? "text-indigo-600 font-semi-bold" : ""}'
+                `nav-link ${current === "contact" ? "text-indigo-600 font-semi-bold" : ""}`
               }
             >
               Contact
