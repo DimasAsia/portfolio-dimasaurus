@@ -102,7 +102,7 @@ export default function Hero() {
 
             {/* PHOTO */}
             <Image
-              src="/profile.png"
+              src="/profile.jpg"
               alt="Galih Dimas"
               fill
               priority

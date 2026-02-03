@@ -1,32 +1,49 @@
 import Link from "next/link";
+import { CodeBracketIcon } from "@heroicons/react/24/outline";
 
-export default function Footer(){
-    return (
-        <footer className="border-t mt-20 bg-white/80">
-            <div className="mx-auto max-w-6xl px-4 py-16 grid gap-10 md:grid-cols-3">
-                {/* Brand*/}
-                <div className="space-y-4 text-black">
-                    <h3 className="font-semibold text-sm">Dimasaurus</h3>
-                    <p className="text-sm leading-relaxed">
-                        Software Engineer focused on building scalable web applications, clean architecture, and modern fronten
-                    </p>
-                    <p>
-                        Tech: Next.js
-                    </p>
-                </div>
+export default function Footer() {
+  return (
+    <footer className="border-t bg-white">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 py-8 md:flex-row">
+        {/* LEFT */}
+        <div className="flex items-center gap-2 text-sm font-medium text-black">
+          <CodeBracketIcon className="h-5 w-5 text-sm font-semibold tracking-wide text-black" />
+          DIMASAURUS
+        </div>
 
-                {/*Left*/}
-                <p className="text-sm text-black">
-                    © {new Date().getFullYear()} Dimasaurus. All rights reserved.
-                </p>
+        {/* CENTER */}
+        <p className="text-xs text-gray-500 text-center ">
+          © {new Date().getFullYear()} Dimasaurus. Designed with FullSenyum.
+        </p>
 
-                {/** Right */}
-                <div className="flex gap-6 text-sm">
-                    <Link className="text-black hover:text-indigo-400 transotion-colors" href="https://github.com/DimasAsia" target="_blank" rel="noneferrer">Github</Link>
-                    <Link className="text-black hover:text-indigo-400 transotion-colors" href="https://www.linkedin.com/in/galihdimasprastowo/" target="_blank" rel="noneferrer">Linkedln</Link>
-                    <Link className="text-black hover:text-indigo-400 transotion-colors" href="mailto:galihdimas@outlook.com" >Email</Link>
-                </div>
-            </div>
-        </footer>
-    );
+        {/* RIGHT */}
+        <div className="flex items-center gap-5 text-gray-600">
+          <Link
+            href="https://github.com/DimasAsia"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-indigo-600 transition-colors"
+          >
+            GitHub
+          </Link>
+
+          <Link
+            href="https://www.linkedin.com/in/galihdimasprastowo/"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-indigo-600 transition-colors"
+          >
+            LinkedIn
+          </Link>
+
+          <Link
+            href="mailto:galihdimas@outlook.com"
+            className="hover:text-indigo-600 transition-colors"
+          >
+            Email
+          </Link>
+        </div>
+      </div>
+    </footer>
+  );
 }

@@ -1,64 +1,49 @@
 export const projects = [
   {
     id: 1,
-    slug: "percona-xtradb-cluster",
+    slug: "banking-monitoring-dashboard",
     title: "Banking Monitoring Dashboard",
-    description:
+    shortDescription:
       "Internal monitoring system for transaction health, alerting, and performance metrics.",
+    type: "web", // 🔥 penting
     tech: ["Next.js", "Tailwind", "MySQL", "PMM"],
-    image: "/public/window.svg",
-    demo: "#",
-    repo: "#",
+    image: "/profile.jpg",
+
+    demoUrl: "https://internal-demo.example.com",
+    repoUrl: null,
+
     featured: true,
   },
+
   {
     id: 2,
-    slug: "percona-xtradb",
-    title: "High Availability Database Cluster",
-    description:
-      "Design and implementation of multi-DC Percona XtraDB Cluster architecture.",
+    slug: "percona-xtradb-cluster-3dc",
+    title: "Percona XtraDB Cluster (3 Data Centers)",
+    shortDescription:
+      "High availability MySQL cluster with multi-DC topology and failover strategy.",
+    type: "infrastructure",
     tech: ["Percona", "MySQL", "HAProxy", "Linux"],
-    image: "/public/window.svg",
-    demo: "#",
-    repo: "#",
+    image: "/window.svg",
+
+    demoUrl: null, // ❗ infra = null
+    repoUrl: null,
+
     featured: true,
   },
+
   {
     id: 3,
-    slug: "xtradb",
-    title: " Database Cluster",
-    description:
-      "Design and implementation of multi-DC Percona XtraDB Cluster architecture.",
-    tech: ["Percona", "MySQL", "HAProxy", "Linux"],
-    image: "/public/window.svg",
-    demo: "#",
-    repo: "#",
-    featured: true,
-  },
-  {
-    id: 4,
-    slug: "xtradb-cluster",
-    title: "High Availability D",
-    description:
-      "Design and implementation of multi-DC Percona XtraDB Cluster architecture.",
-    tech: ["Percona", "MySQL", "HAProxy", "Linux"],
-    image: "/public/window.svg",
-    demo: "#",
-    repo: "#",
-    featured: true,
-  },
-  {
-    id: 5,
-    slug: "percona",
-    title: "High   Cluster",
-    description:
-      "Design and implementation of multi-DC Percona XtraDB Cluster architecture.",
-    tech: ["Percona", "MySQL", "HAProxy", "Linux"],
-    image: "/public/window.svg",
-    demo: "#",
-    repo: "#",
+    slug: "xtradb-performance-testing",
+    title: "Database Performance & Stress Testing",
+    shortDescription:
+      "Stress testing and benchmarking of MySQL clusters using sysbench and JMeter.",
+    type: "case-study",
+    tech: ["MySQL", "Sysbench", "JMeter"],
+    image: "/window.svg",
+
+    demoUrl: null,
+    repoUrl: "https://github.com/DimasAsia",
+
     featured: false,
   },
-  
 ];
-

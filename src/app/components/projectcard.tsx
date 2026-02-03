@@ -20,7 +20,7 @@ export default function ProjectCard({
   repo,
 }: Project) {
   return (
-    <div className="group rounded-xl border bg-white shadow-sm transition hover:shadow-lg">
+    <div className="group rounded-xl bg-white shadow-sm transition hover:shadow-lg">
       {/* IMAGE */}
       <div className="relative h-30 overflow-hidden rounded-t-xl">
         <Image
