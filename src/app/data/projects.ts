@@ -1,4 +1,17 @@
-export const projects = [
+export type Project = {
+  id: number;
+  slug: string;
+  title: string;
+  shortDescription: string;
+  type: "web" | "infrastructure" | "case-study";
+  tech: string[];
+  image: string;
+  demoUrl: string | null;
+  repoUrl: string | null;
+  featured: boolean;
+};
+
+export const projects: Project[] = [
   {
     id: 1,
     slug: "banking-monitoring-dashboard",

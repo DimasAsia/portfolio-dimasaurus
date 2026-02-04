@@ -1,28 +1,23 @@
 "use client";
 
 import Image from "next/image";
+import type { Project } from "../data/projects";
 
-type Project = {
-  title: string;
-  description: string;
-  tech: string[];
-  image: string;
-  demo?: string;
-  repo?: string;
-};
+type Props = Pick<
+  Project,
+  "title" | "shortDescription" | "tech" | "image"
+>;
 
 export default function ProjectCard({
   title,
-  description,
+  shortDescription,
   tech,
   image,
-  demo,
-  repo,
 }: Project) {
   return (
-    <div className="group rounded-xl bg-white shadow-sm transition hover:shadow-lg">
+    <div className="group flex h-full flex-col rounded-xl bg-white shadow-sm transition hover:shadow-lg">
       {/* IMAGE */}
-      <div className="relative h-30 overflow-hidden rounded-t-xl">
+      <div className="relative h-48 overflow-hidden rounded-t-xl">
         <Image
           src={image}
           alt={title}
@@ -32,25 +27,24 @@ export default function ProjectCard({
       </div>
 
       {/* CONTENT */}
-      <div className="flex flex-col gap-4 p-6">
+      <div className="flex flex-1 flex-col gap-4 p-6">
         <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="text-sm text-gray-600">{description}</p>
 
-        {/* TECH STACK */}
-        <div className="flex flex-wrap gap-2">
+        <p className="text-sm text-gray-600 line-clamp-3">
+          {shortDescription}
+        </p>
+
+        {/* TECH */}
+        <div className="mt-auto flex flex-wrap gap-2">
           {tech.map((t) => (
             <span
               key={t}
-              className="rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700"
+              className="rounded-md bg-gray-100 px-2 py-1 text-xs"
             >
               {t}
             </span>
           ))}
         </div>
-
-        {/* ACTION */}
-        
-        
       </div>
     </div>
   );

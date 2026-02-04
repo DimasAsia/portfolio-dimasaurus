@@ -46,7 +46,7 @@ export default function CareerJourney() {
               {/* ================= DESKTOP ================= */}
               <div className="relative hidden md:grid grid-cols-[1fr_40px_1fr] items-start">
                 {/* LEFT */}
-                <div className="flex justify-end">
+                <div className="flex justify-end me-10">
                   {isEven ? (
                     <Description text={exp.description} />
                   ) : (
@@ -59,11 +59,12 @@ export default function CareerJourney() {
                   {/* LINE */}
                   <span className="absolute top-7 bottom-0 w-2 h-35 bg-gray-300" />
                   {/* DOT */}
-                  <span className="relative z-10 mt-1 h-4 w-4 rounded-full bg-indigo-600" />
+                  <span className="absolute -bottom-4 z-10  h-4 w-4 rounded-full bg-white" />
+                  <span className="absolute top-1 z-10  h-2 w-2 rounded-full bg-indigo-600" />
                 </div>
 
                 {/* RIGHT */}
-                <div className="flex justify-start">
+                <div className="flex justify-start ms-10">
                   {isEven ? (
                     <Meta exp={exp} align="left" />
                   ) : (
@@ -121,7 +122,7 @@ function Meta({
 
 function Description({ text }: { text: string }) {
   return (
-    <div className="max-w-md rounded-lg border bg-white p-5 text-sm text-gray-700 shadow-sm">
+    <div className="max-w-md rounded-lg bg-white p-5 text-sm text-gray-700 shadow-sm">
       {text}
     </div>
   );
