@@ -3,6 +3,7 @@ export type Project = {
   slug: string;
   title: string;
   shortDescription: string;
+  description?: string;
   type: "web" | "infrastructure" | "case-study";
   tech: string[];
   image: string;
@@ -18,6 +19,7 @@ export const projects: Project[] = [
     title: "Banking Monitoring Dashboard",
     shortDescription:
       "Internal monitoring system for transaction health, alerting, and performance metrics.",
+    description: "Internal monitoring system for transaction health, alerting, and performance metricsInternal monitoring system for transaction health, alerting, and performance metrics..",
     type: "web", // 🔥 penting
     tech: ["Next.js", "Tailwind", "MySQL", "PMM"],
     image: "/profile.jpg",

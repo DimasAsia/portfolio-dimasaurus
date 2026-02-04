@@ -3,16 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-
-type Project = {
-  title: string;
-  shortDescription: string;
-  tech: string[];
-  image: string;
-  demoUrl: string | null;
-  repoUrl: string | null;
-  slug: string;
-};
+import { Project } from "../data/projects";
 
 type Props = {
   project: Project | null;

@@ -36,7 +36,7 @@ export default function CareerJourney() {
       {/* TIMELINE */}
       <ul className="relative space-y-20">
         {/* MOBILE VERTICAL LINE */}
-        <span className="absolute left-1 top-0 h-full w-1 bg-gray-300 md:hidden" />
+        <span className="absolute left-1.5 top-0 h-full w-1 bg-gray-300 md:hidden" />
 
         {experiences.map((exp, index) => {
           const isEven = index % 2 === 0;
@@ -76,10 +76,11 @@ export default function CareerJourney() {
               {/* ================= MOBILE ================= */}
               <div className="relative flex gap-6 md:hidden">
                 {/* DOT */}
-                <span className="relative z-10 mt-2 h-3 w-3 rounded-full bg-indigo-600" />
+                <span className="absolute top-1 z-10 me-1 h-4 w-4 rounded-full bg-white" />
+                <span className="absolute top-1 z-10 m-1 h-2 w-2 rounded-full bg-indigo-600"/>
 
                 {/* CONTENT */}
-                <div className="space-y-3">
+                <div className="space-y-3 ms-10">
                   <Meta exp={exp} align="left" />
                   <Description text={exp.description} />
                 </div>
