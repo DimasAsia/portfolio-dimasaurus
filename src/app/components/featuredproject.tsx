@@ -1,17 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import { projects } from "../data/projects";
-import ProjectCard from "./projectcard";
+import { useEffect, useState } from "react";
 import ProjectModal from "./projectmodal";
 import Link from "next/link";
+import { getFeaturedProjects } from "../service/project.service";
+import { Project } from "@/types/project";
+import ProjectCard from "./projectcard";
 
 export default function FeaturedProjects() {
-  const featured = projects.filter((p) => p.featured).slice(0, 4);
-  const [selected, setSelected] = useState<any | null>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [selected, setSelected] = useState<Project | null>(null);
+
+  useEffect(() => {
+    getFeaturedProjects().then(setProjects);
+  }, []);
 
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-4 py-20">
+    <section id="projects" className="mx-auto max-w-6xl px-4 py-15">
       <div className="mb-12">
         <h2 className="text-3xl font-bold">Projects</h2>
         <p className="mt-2 text-gray-600">
@@ -20,7 +25,7 @@ export default function FeaturedProjects() {
       </div>
 
       <div className="grid gap-8 sm:grid-cols-2">
-        {featured.map((project) => (
+        {projects.map((project) => (
           <div
             key={project.id}
             onClick={() => setSelected(project)}
@@ -31,12 +36,11 @@ export default function FeaturedProjects() {
         ))}
       </div>
 
-      {/* MODAL */}
       <ProjectModal
         project={selected}
         onClose={() => setSelected(null)}
       />
-      {/* CTA */}
+
       <div className="mt-14 text-center">
         <Link
           href="/project"

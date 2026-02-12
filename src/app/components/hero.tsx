@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { scrollToSection } from "../lib/scrollToSection";
 import { motion } from "framer-motion";
+import GetImage from "./getimage";
+
 
 export default function Hero() {
   const container = {
@@ -87,27 +89,20 @@ export default function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="flex justify-center md:justify-end"
         >
-          <div className="relative h-82 w-82 sm:h-80 sm:w-80">
+          <div className="relative h-92 w-92 sm:h-90 sm:w-90">
             {/* SHAPE BACKGROUND */}
             <div
               className="
                 absolute inset-0
                 -z-10
-                rounded-[60%_40%_30%_70%/60%_30%_70%_40%]
+                rounded-[70%_50%_40%_80%/70%_40%_80%_50%]
                 bg-gradient-to-br
                 from-indigo-500 via-purple-500 to-pink-500
                 blur-2xl opacity-70
               "
             />
-
             {/* PHOTO */}
-            <Image
-              src="/profile.jpg"
-              alt="Galih Dimas"
-              fill
-              priority
-              className="rounded-2xl object-cover shadow-lg"
-            />
+            <GetImage title="profile" />
           </div>
         </motion.div>
       </div>

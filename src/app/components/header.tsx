@@ -49,6 +49,14 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+      <div className="relative w-full h-7 bg-yellow-400 border-y-4 border-black flex items-center justify-center overflow-hidden shadow-lg">
+        {/* Pola Garis Hitam Menggunakan Inline Style untuk Gradient */} 
+        <div className="absolute inset-0 opacity-100" style={{backgroundImage:`repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 50%, #000 50%, #000 75%, transparent 75%, transparent), backgroundSize: '80px 80px'`}} ></div>
+          {/* Teks di Tengah */} 
+          <div className="relative z-10 bg-yellow-400 px-4 font-black text-black tracking-widest uppercase text-sm md:text-base text-center"> 
+            Maintenance Development
+          </div>
+      </div>
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         {/* Logo */}
         <button

@@ -22,7 +22,7 @@ export const projects: Project[] = [
     description: "Internal monitoring system for transaction health, alerting, and performance metricsInternal monitoring system for transaction health, alerting, and performance metrics..",
     type: "web", // 🔥 penting
     tech: ["Next.js", "Tailwind", "MySQL", "PMM"],
-    image: "/profile.jpg",
+    image: "/window.svg",
 
     demoUrl: "https://internal-demo.example.com",
     repoUrl: null,

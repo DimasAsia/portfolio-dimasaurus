@@ -1,30 +1,26 @@
 "use client";
 
-const experiences = [
-  {
-    period: "2023 — Present",
-    role: "IT Engineer",
-    company: "Banking Company",
-    description:
-      "Design and maintain high availability Percona XtraDB Cluster across multi data center with HAProxy and PMM monitoring.",
-  },
-  {
-    period: "2021 — 2023",
-    role: "Fullstack Developer",
-    company: "Tech Consultant",
-    description:
-      "Developed internal dashboards using Next.js, REST APIs, and optimized frontend performance.",
-  },
-  {
-    period: "2019 — 2021",
-    role: "Junior Software Engineer",
-    company: "Software House",
-    description:
-      "Worked on backend services and supported frontend development while learning system architecture.",
-  },
-];
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+
+type Experience = {
+  id: string;
+  period: string;
+  role: string;
+  company: string;
+  description: string;
+};
 
 export default function CareerJourney() {
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+
+  useEffect(() => {
+    fetch("/api/experiences")
+      .then((res) => res.json())
+      .then((data) => setExperiences(data))
+      .catch(console.error);
+  }, []);
+
   return (
     <section id="experience" className="mx-auto max-w-6xl px-4 py-24">
       {/* HEADER */}
@@ -35,17 +31,15 @@ export default function CareerJourney() {
 
       {/* TIMELINE */}
       <ul className="relative space-y-20">
-        {/* MOBILE VERTICAL LINE */}
         <span className="absolute left-1.5 top-0 h-full w-1 bg-gray-300 md:hidden" />
 
         {experiences.map((exp, index) => {
           const isEven = index % 2 === 0;
 
           return (
-            <li key={index} className="relative">
-              {/* ================= DESKTOP ================= */}
+            <li key={exp.id} className="relative">
+              {/* DESKTOP */}
               <div className="relative hidden md:grid grid-cols-[1fr_40px_1fr] items-start">
-                {/* LEFT */}
                 <div className="flex justify-end me-10">
                   {isEven ? (
                     <Description text={exp.description} />
@@ -54,16 +48,12 @@ export default function CareerJourney() {
                   )}
                 </div>
 
-                {/* CENTER */}
-                <div className="relative flex justify-center">
-                  {/* LINE */}
-                  <span className="absolute top-7 bottom-0 w-2 h-35 bg-gray-300" />
-                  {/* DOT */}
-                  <span className="absolute -bottom-4 z-10  h-4 w-4 rounded-full bg-white" />
-                  <span className="absolute top-1 z-10  h-2 w-2 rounded-full bg-indigo-600" />
+                <div className="relative flex justify-center min-h-full">
+                  <span className="absolute -top-4 -bottom-16  w-2 bg-gray-300" />
+                  <span className="absolute -top-4 z-10 h-4 w-4 rounded-full bg-white" />
+                  <span className="absolute -top-3 z-10 h-2 w-2 rounded-full bg-indigo-600" />
                 </div>
 
-                {/* RIGHT */}
                 <div className="flex justify-start ms-10">
                   {isEven ? (
                     <Meta exp={exp} align="left" />
@@ -73,13 +63,11 @@ export default function CareerJourney() {
                 </div>
               </div>
 
-              {/* ================= MOBILE ================= */}
+              {/* MOBILE */}
               <div className="relative flex gap-6 md:hidden">
-                {/* DOT */}
-                <span className="absolute top-1 z-10 me-1 h-4 w-4 rounded-full bg-white" />
-                <span className="absolute top-1 z-10 m-1 h-2 w-2 rounded-full bg-indigo-600"/>
+                <span className="absolute top-1 z-10 h-4 w-4 rounded-full bg-white" />
+                <span className="absolute top-1 z-10 m-1 h-2 w-2 rounded-full bg-indigo-600" />
 
-                {/* CONTENT */}
                 <div className="space-y-3 ms-10">
                   <Meta exp={exp} align="left" />
                   <Description text={exp.description} />
@@ -93,8 +81,6 @@ export default function CareerJourney() {
   );
 }
 
-/* ================= SUB COMPONENT ================= */
-
 function Meta({
   exp,
   align,
@@ -107,11 +93,7 @@ function Meta({
   align: "left" | "right";
 }) {
   return (
-    <div
-      className={`space-y-1 ${
-        align === "right" ? "text-right" : "text-left"
-      }`}
-    >
+    <div className={align === "right" ? "text-right" : "text-left"}>
       <span className="text-sm font-medium text-indigo-600">
         {exp.period}
       </span>
@@ -123,8 +105,8 @@ function Meta({
 
 function Description({ text }: { text: string }) {
   return (
-    <div className="max-w-md rounded-lg bg-white p-5 text-sm text-gray-700 shadow-sm">
-      {text}
+    <div className="prose  [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal max-w-md rounded-lg bg-white p-5 text-sm text-gray-700 shadow-sm leading-loose ">
+      <ReactMarkdown>{text}</ReactMarkdown>
     </div>
   );
 }

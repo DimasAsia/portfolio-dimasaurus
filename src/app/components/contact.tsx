@@ -1,4 +1,41 @@
+"use client";
+
+import { useState } from 'react';
+import { sendContactMessage } from '../service/contact.service';
+
 export default function Contact() {
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState('')
+
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setLoading(true)
+    setError('')
+    setSuccess(false)
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+
+    try {
+      await sendContactMessage({
+        name: formData.get('name') as string,
+        email: formData.get('email') as string,
+        message_text: formData.get('message') as string,
+      })
+
+      form.reset()
+      setSuccess(true)
+      setTimeout(() => {
+          setSuccess(false)
+        }, 3000) 
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
   return (
     <section
       id="contact"
@@ -20,7 +57,7 @@ export default function Contact() {
 
             <div className="mt-10 space-y-4 text-sm">
               <p className="flex items-center gap-3">
-                <span className="text-indigo-500">✉</span>
+                <span className="text-indigo-500 ms-1">✉</span>
                 galihdimas@outlook.com
               </p>
               <p className="flex items-center gap-3">
@@ -31,13 +68,14 @@ export default function Contact() {
           </div>
 
           {/* RIGHT */}
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <label className="mb-2 block text-xs font-medium text-gray-500">
                   FULL NAME
                 </label>
                 <input
+                  name="name"
                   type="text"
                   placeholder="Your name"
                   className="w-full rounded-lg border px-4 py-3 text-sm outline-none focus:border-indigo-500"
@@ -49,8 +87,10 @@ export default function Contact() {
                   EMAIL ADDRESS
                 </label>
                 <input
+                  name="email"
                   type="email"
                   placeholder="you@email.com"
+                  required
                   className="w-full rounded-lg border px-4 py-3 text-sm outline-none focus:border-indigo-500"
                 />
               </div>
@@ -61,7 +101,9 @@ export default function Contact() {
                 MESSAGE
               </label>
               <textarea
+                name="message"
                 rows={5}
+                required
                 placeholder="How can I help you?"
                 className="w-full resize-none rounded-lg border px-4 py-3 text-sm outline-none focus:border-indigo-500"
               />
@@ -69,10 +111,18 @@ export default function Contact() {
 
             <button
               type="submit"
+              disabled={loading}
               className="rounded-lg bg-indigo-500 px-8 py-3 text-sm font-medium text-white transition hover:bg-indigo-600"
             >
-              Send Message
+              {loading ? 'Sending...' : 'Send Message'}
             </button>
+            {success && (
+              <p className="text-sm text-green-600">
+                Message sent successfully.</p>
+            )}
+            {error && (
+              <p className="text-sm text-red-600">{error}</p>
+            )}
           </form>
         </div>
       </div>
