@@ -1,8 +1,8 @@
-import { supabase } from "@/app/lib/supabase"
+export async function getExperiences() {
+    const res = await fetch(`api/experiences`);
 
-export const getExperiences = async () => {
-  return supabase
-    .from("experiences")
-    .select("*")
-    .order("order_index")
+    if (!res.ok) {
+        throw new Error("Failed to fetch portfolio image");
+    }
+    return res.json();
 }

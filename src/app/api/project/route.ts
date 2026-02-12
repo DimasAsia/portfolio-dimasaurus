@@ -1,33 +1,37 @@
-
-import { supabaseServer } from '@/app/lib/supabase-server';
-import { NextResponse } from 'next/server'
+import { supabaseServer } from "@/app/lib/supabase-server";
+import { NextResponse } from "next/server";
+import { mapProject } from "@/app/lib/mapProject";
 
 export async function GET() {
   const { data, error } = await supabaseServer
-  .from("projects")
-  .select(`
-    id,
-    slug,
-    title,
-    short_description,
-    image,
-    featured,
-    project_details (
-      content,
-      demo_url,
-      repo_url
-    ),
-    project_tech (
-      tech
-    )
-  `)
-  .eq("featured", true)
-  .order("created_at", { ascending: false });
-
+    .from("projects")
+    .select(`
+      id,
+      slug,
+      title,
+      short_description,
+      image,
+      featured,
+      project_details (
+        content,
+        demo_url,
+        repo_url
+      ),
+      project_tech (
+        tech
+      )
+    `)
+    .eq("featured", true)
+    .order("created_at", { ascending: false });
 
   if (error) {
-    return NextResponse.json({ error }, { status: 500 })
+    return NextResponse.json(
+      { error: error.message },
+      { status: 500 }
+    );
   }
 
-  return NextResponse.json(data)
+  const projects = data.map(mapProject);
+
+  return NextResponse.json(projects);
 }

@@ -1,5 +1,5 @@
+import { supabaseServer } from "@/app/lib/supabase-server";
 import { NextResponse } from "next/server";
-import { supabase } from "@/app/lib/supabase";
 
 export async function GET(
   _req: Request,
@@ -7,7 +7,7 @@ export async function GET(
 ) {
   const { title } = await params;
 
-  const { data, error } = await supabase
+  const { data, error } = await supabaseServer
     .from("portfolio")
     .select("image_url")
     .eq("title", title)
