@@ -1,11 +1,11 @@
+import { NextRequest, NextResponse } from "next/server";
 import { supabaseServer } from "@/app/lib/supabase-server";
-import { NextResponse } from "next/server";
 
 export async function GET(
-  _req: Request,
+  _req: NextRequest,
   { params }: { params: Promise<{ title: string }> }
 ) {
-  const { title } = await params;
+  const { title } = await params; 
 
   const { data, error } = await supabaseServer
     .from("portfolio")
@@ -13,12 +13,14 @@ export async function GET(
     .eq("title", title)
     .single();
 
-  if (error) {
+  if (error || !data) {
     return NextResponse.json(
-      { error: error.message },
+      { error: "Image not found" },
       { status: 404 }
     );
   }
 
-  return NextResponse.json(data);
+  return NextResponse.json({
+    image_url: data.image_url,
+  });
 }
