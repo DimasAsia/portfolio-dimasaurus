@@ -1,3 +1,4 @@
+
 import { Project } from "@/types/project";
 
 export function mapProject(row: any): Project {

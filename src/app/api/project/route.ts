@@ -1,8 +1,9 @@
-import { supabase } from '@/app/lib/supabase'
+
+import { supabaseServer } from '@/app/lib/supabase-server';
 import { NextResponse } from 'next/server'
 
 export async function GET() {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseServer
   .from("projects")
   .select(`
     id,

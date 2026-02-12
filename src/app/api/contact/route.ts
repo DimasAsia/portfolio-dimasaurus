@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { supabase } from "@/app/lib/supabase";
+import { supabaseServer } from "@/app/lib/supabase-server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { name, email, message_text } = body;
 
-    await supabase.from("contact_messages").insert({
+    await supabaseServer.from("contact_messages").insert({
       name,
       email,
       message_text,
