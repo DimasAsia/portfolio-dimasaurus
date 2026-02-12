@@ -1,5 +1,5 @@
 export type Project = {
-  id: string;
+  id: SVGAnimatedNumberList;
   slug: string;
   title: string;
   shortDescription: string;
