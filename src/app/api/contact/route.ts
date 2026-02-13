@@ -2,14 +2,17 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { supabaseServer } from "@/app/lib/supabase-server";
 
+export const dynamic = "force-dynamic"
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
+  const supabase = supabaseServer();
   try {
     const body = await req.json();
     const { name, email, message_text } = body;
 
-    await supabaseServer.from("contact_messages").insert({
+    await supabase.from("contact_messages").insert({
       name,
       email,
       message_text,

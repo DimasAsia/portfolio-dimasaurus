@@ -1,13 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseServer } from "@/app/lib/supabase-server";
 
+export const dynamic = "force-dynamic"
+
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ title: string }> }
+
 ) {
+  const supabase = supabaseServer();
   const { title } = await params; 
 
-  const { data, error } = await supabaseServer
+  const { data, error } = await supabase
     .from("portfolio")
     .select("image_url")
     .eq("title", title)
