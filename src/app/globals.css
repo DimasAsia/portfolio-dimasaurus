@@ -32,9 +32,15 @@ body {
   text-decoration-color: #0a0a0a;
 }
 
+@layer base {
+  button, input, textarea {
+    cursor: pointer;
+  }
+}
+
 @layer components {
   .nav-link {
-    @apply relative text-sm font-medium uppercase text-neutral-950 transition-colors duration-300 hover:text-indigo-600;
+    @apply relative text-sm font-medium uppercase text-neutral-950 transition-colors duration-300 hover:text-indigo-600 cursor-pointer;
   }
 
   .nav-link::after {

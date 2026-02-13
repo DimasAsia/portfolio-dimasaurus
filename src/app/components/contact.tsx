@@ -39,7 +39,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="scroll-mt-24 mx-auto max-w-6xl px-1 py-2"
+      className="scroll-mt-24 mx-auto max-w-6xl px-1 py-5"
     >
       <div className="rounded-2xl bg-white p-10 shadow-sm md:p-16">
         <div className="grid gap-16 md:grid-cols-2">
