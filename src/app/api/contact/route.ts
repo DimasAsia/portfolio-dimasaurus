@@ -4,10 +4,9 @@ import { supabaseServer } from "@/app/lib/supabase-server";
 
 export const dynamic = "force-dynamic"
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   const supabase = supabaseServer();
+  const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const body = await req.json();
     const { name, email, message_text } = body;
@@ -18,6 +17,7 @@ export async function POST(req: Request) {
       message_text,
     });
 
+    
     await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
       to: process.env.CONTACT_RECEIVER_EMAIL!,
