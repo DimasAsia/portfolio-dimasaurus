@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import ProjectDetailClient from '@/app/components/projectdetailclient';
 import { supabase } from '@/app/lib/supabase';
 
+export const dynamic = "force-dynamic"
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
