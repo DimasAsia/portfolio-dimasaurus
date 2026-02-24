@@ -25,9 +25,9 @@ export default function GetImage({ title }: Props) {
       <Image
         src={image}
         alt={title}
-        fill
         priority
-        className="relative rounded-2xl object-cover shadow-lg h-52 w-52"
+        fill
+        className="relative rounded-2xl object-cover shadow-lg"
       />
   );
 }

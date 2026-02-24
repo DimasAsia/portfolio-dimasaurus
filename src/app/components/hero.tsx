@@ -94,15 +94,15 @@ export default function Hero() {
             <div
               className="
                 absolute inset-0
-                -z-10
+                -z-5
                 rounded-[70%_50%_40%_80%/70%_40%_80%_50%]
                 bg-gradient-to-br
                 from-indigo-500 via-purple-500 to-pink-500
-                blur-2xl opacity-70
+                blur-xl opacity-70
               "
-            />
+            ></div>
             {/* PHOTO */}
-            <GetImage title="profile" />
+            <GetImage title="profile"/>
           </div>
         </motion.div>
       </div>

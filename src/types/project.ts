@@ -4,11 +4,10 @@ export type Project = {
   title: string;
   shortDescription: string;
   image: string;
-  featured: boolean;
   tech: string[];
+  featured: boolean;
 
-  // detail
-  content?: string;
+  content?: string | null;
   demoUrl?: string | null;
   repoUrl?: string | null;
 };

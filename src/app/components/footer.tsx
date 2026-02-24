@@ -5,7 +5,7 @@ import { CodeBracketIcon } from "@heroicons/react/24/outline";
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-white">
+    <footer className="border-t bg-white mt-5">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 py-8 md:flex-row">
         {/* LEFT */}
         <div className="flex items-center gap-2 text-sm font-medium text-black">

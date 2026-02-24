@@ -1,10 +1,18 @@
 import { NextResponse } from "next/server";
 import { supabaseServer } from "@/app/lib/supabase-server";
 import { mapProject } from "@/app/lib/mapProject";
+import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function GET(
+  _req: Request,
+  { params }: { params: { slug: string } }
+  
+) {
+  if (!slug || slug === "undefined") {
+    notFound();
+  }
   const supabase = supabaseServer();
 
   const { data, error } = await supabase
@@ -14,11 +22,12 @@ export async function GET() {
       project_details ( content, demo_url, repo_url ),
       project_tech ( tech )
     `)
-    .order("created_at", { ascending: false });
+    .eq("slug", params.slug)
+    .single();
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error || !data) {
+    return NextResponse.json(null, { status: 404 });
   }
 
-  return NextResponse.json(data.map(mapProject));
+  return NextResponse.json(mapProject(data));
 }

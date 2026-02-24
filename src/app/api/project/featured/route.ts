@@ -14,6 +14,7 @@ export async function GET() {
       project_details ( content, demo_url, repo_url ),
       project_tech ( tech )
     `)
+    .eq("featured", true)
     .order("created_at", { ascending: false });
 
   if (error) {

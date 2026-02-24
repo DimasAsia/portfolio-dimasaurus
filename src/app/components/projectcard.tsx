@@ -6,41 +6,35 @@ import { Project } from "@/types/project";
 type Props = Pick<
   Project,
   "title" | "shortDescription" | "tech" | "image"
->;
+> & {
+  onClick?: () => void;
+};
 
 export default function ProjectCard({
   title,
   shortDescription,
   tech,
   image,
-}: Project) {
+  onClick,
+}: Props) {
   return (
-    <div className="group flex h-full flex-col rounded-xl bg-white shadow-sm transition hover:shadow-lg">
-      {/* IMAGE */}
-      <div className="relative h-48 overflow-hidden rounded-t-xl">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+    <div
+      onClick={onClick}
+      className="cursor-pointer rounded-xl bg-white shadow hover:shadow-lg transition"
+    >
+      <div className="relative h-48">
+        <Image src={image} alt={title} fill className="object-cover rounded-t-xl" />
       </div>
 
-      {/* CONTENT */}
-      <div className="flex flex-1 flex-col gap-4 p-6">
-        <h3 className="text-lg font-semibold">{title}</h3>
-
+      <div className="p-5 space-y-3">
+        <h3 className="font-semibold text-lg">{title}</h3>
         <p className="text-sm text-gray-600 line-clamp-3">
           {shortDescription}
         </p>
 
-        {/* TECH */}
-        <div className="mt-auto flex flex-wrap gap-2">
-          {tech.map((t) => (
-            <span
-              key={t}
-              className="rounded-md bg-gray-100 px-2 py-1 text-xs"
-            >
+        <div className="flex flex-wrap gap-2">
+          {tech.map(t => (
+            <span key={t} className="text-xs bg-gray-100 px-2 py-1 rounded">
               {t}
             </span>
           ))}

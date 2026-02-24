@@ -9,6 +9,10 @@
   --foreground: #171717;
 }
 
+* {
+  color-interpolation: srgb;
+  color-interpolation-filters: sRGB;
+}
 
 @theme inline {
   --color-background: var(--background);
