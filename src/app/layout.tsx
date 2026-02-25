@@ -34,13 +34,17 @@ export default function RootLayout({
 
 
 export const metadata: Metadata = {
-  title: "Dimasaurus | Fullstack Developer",
+  icons: {
+    icon: "/favicon.svg",
+  },
+  title: "Dimasaurus | IT Engineer",
   description: "Portfolio Dimasaurus, Fullstack Developer specializing in React, Next.js, Supabase, and modern web technologies.",
   keywords: [
     "Fullstack Developer",
     "Next.js",
     "React",
     "Supabase",
+    "IT Engineer",
     "Portfolio"
   ],
   openGraph: {

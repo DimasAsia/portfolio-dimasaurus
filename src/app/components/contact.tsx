@@ -46,22 +46,27 @@ export default function Contact() {
           {/* LEFT */}
           <div>
             <h3 className="text-4xl font-bold leading-tight">
-              Let’s build something{" "}
-              <span className="text-indigo-500">remarkable.</span>
+              Let’s build reliable  {" "}
+              <span className="text-indigo-500">systems.</span>
             </h3>
 
             <p className="mt-6 max-w-md text-gray-600 leading-relaxed">
-              I’m currently available for freelance projects or full-time roles.
-              If you have a challenge, I’m ready to solve it.
+              I’m open to professional opportunities in IT infrastructure, 
+              system engineering, and data platforms.</p>
+            <p className="mt-2 max-w-md text-gray-600 leading-relaxed">Feel free to reach out for collaboration, discussion, or full-time roles.
             </p>
 
-            <div className="mt-10 space-y-4 text-sm">
-              <p className="flex items-center gap-3">
-                <span className="text-indigo-500 ms-1">✉</span>
+            <div className="mt-8 space-y-2 text-sm">
+              <p className="flex items-center gap-2">
+                <span className="text-indigo-500"><img width="20" height="20" src="https://img.icons8.com/plumpy/24/new-post.png" alt="e-mail"/></span>
                 galihdimas@outlook.com
               </p>
-              <p className="flex items-center gap-3">
-                <span className="text-indigo-500">📍</span>
+              <p className="flex items-center gap-2">
+                <span className="text-indigo-500"><img width="20" height="20" src="https://img.icons8.com/forma-bold/24/phone.png" alt="phone"/></span>
+                +62 85785449545
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="text-indigo-500"><img width="20" height="20" src="https://img.icons8.com/fluency/48/map-pin.png" alt="map-pin"/></span>
                 Indonesia (Remote)
               </p>
             </div>

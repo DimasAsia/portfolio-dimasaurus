@@ -101,8 +101,10 @@ export default function Header() {
           </button>
 
           <a
-            href="https://nffuzwogggvxfprgvagp.supabase.co/storage/v1/object/public/personal-management-systems/Project/Portofolio-Dimasaurus/CV%20Galih%20Dimas%20Prastowo%20.pdf"
+            href="https://nffuzwogggvxfprgvagp.supabase.co/storage/v1/object/public/personal-management-systems/Project/Portofolio-Dimasaurus/CV%20Galih%20Dimas%20Prastowo%20.pdf?download="
+            target="_blank"
             download
+            rel="noopener noreferrer"
             className="resume-btn"
           >
             Resume

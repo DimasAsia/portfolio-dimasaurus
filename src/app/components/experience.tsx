@@ -105,7 +105,7 @@ function Meta({
 
 function Description({ text }: { text: string }) {
   return (
-    <div className="prose  [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal max-w-md rounded-lg bg-white p-5 text-sm text-gray-700 shadow-sm leading-loose ">
+    <div className="prose  [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal max-w-md rounded-lg bg-white p-5 text-sm text-gray-700 shadow-sm leading-relaxed ">
       <ReactMarkdown>{text}</ReactMarkdown>
     </div>
   );

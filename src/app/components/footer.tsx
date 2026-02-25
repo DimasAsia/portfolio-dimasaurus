@@ -26,7 +26,7 @@ export default function Footer() {
             rel="noreferrer"
             className="hover:text-indigo-600 transition-colors"
           >
-            GitHub
+            <img width="24" height="24" src="https://img.icons8.com/pulsar-line/48/github.png" alt="github"/>
           </Link>
 
           <Link
@@ -35,14 +35,14 @@ export default function Footer() {
             rel="noreferrer"
             className="hover:text-indigo-600 transition-colors"
           >
-            LinkedIn
+          <img width="24" height="24" src="https://img.icons8.com/fluency/48/linkedin.png" alt="linkedin"/>
           </Link>
 
           <Link
             href="mailto:galihdimas@outlook.com"
             className="hover:text-indigo-600 transition-colors"
           >
-            Email
+            <img width="24" height="24" src="https://img.icons8.com/plumpy/24/new-post.png" alt="e-mail"/>
           </Link>
         </div>
       </div>

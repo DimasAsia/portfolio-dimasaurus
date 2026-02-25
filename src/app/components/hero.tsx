@@ -23,14 +23,14 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="mx-auto max-w-6xl px-4 py-10">
+    <section id="home" className="mx-auto max-w-6xl px-4 py-5">
       <div className="grid items-center gap-16 md:grid-cols-2">
         {/* ===== LEFT : TEXT ===== */}
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="flex flex-col gap-6"
+          className="flex flex-col gap-4"
         >
           <motion.span
             variants={item}
@@ -48,17 +48,19 @@ export default function Hero() {
 
           <motion.h2
             variants={item}
-            className="text-3xl font-semibold text-gray-500 sm:text-4xl"
+            className="font-semibold text-gray-500 sm:text-1xl"
           >
-            Fullstack Developer
+            IT Engineer | Systems & Data Platforms<br></br>
+            High Availability • Multi-Site Data Center • Database Systems
           </motion.h2>
 
           <motion.p
             variants={item}
             className="max-w-xl text-gray-600 leading-relaxed"
           >
-            I build modern, scalable web applications with clean architecture,
-            performance-focused design, and maintainable code.
+            I design and document reliable system architectures with a focus on
+            high availability, disaster recovery, and database performance
+            in enterprise environments.
           </motion.p>
 
           {/* CTA */}
