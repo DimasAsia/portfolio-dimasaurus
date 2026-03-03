@@ -72,8 +72,8 @@ export default function ProjectDetailClient({ project }: Props) {
               p: ({ node, ...props }) => (
                 <p className="my-3 leading-relaxed" {...props} />
               ),
-              code: ({ inline, children, ...props }) =>
-                inline ? (
+              code: ({ node, children, ...props }) =>
+                node ? (
                   <code className="rounded bg-muted px-1 py-0.5 text-sm" {...props}>
                     {children}
                   </code>
