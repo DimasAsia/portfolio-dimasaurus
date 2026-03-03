@@ -70,9 +70,4 @@ npm install
 npm run dev
 Open: http://localhost:3000
 
-👤 Author
-
-Galih Dimas (Dimasaurus)
-
-🌐 Portfolio: https://portfolio-dimasaurus.vercel.app/
 
