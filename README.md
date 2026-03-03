@@ -47,27 +47,4 @@ portfolio-dimasaurus/
 
 ---
 
-## 📌 Featured Project
-
-### 🔹 Active-Active Multi–Data Center MySQL Architecture
-
-- Percona XtraDB Cluster (PXC)
-- Multi-site active-active topology
-- Load tested up to **1,500 concurrent threads**
-- Infrastructure bottleneck analysis
-
-📄 **Detail Case Study**  
-👉 [`/projects/multi-dc-pxc`](./projects/multi-dc-pxc/README.md)
-
----
-
-## 🚀 Local Development
-
-```bash
-git clone https://github.com/DimasAsia/portfolio-dimasaurus.git
-cd portfolio-dimasaurus
-npm install
-npm run dev
-Open: http://localhost:3000
-
 
