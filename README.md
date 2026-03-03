@@ -64,7 +64,7 @@ portfolio-dimasaurus/
 ## 🚀 Local Development
 
 ```bash
-git clone https://github.com/<username>/portfolio-dimasaurus.git
+git clone https://github.com/DimasAsia/portfolio-dimasaurus.git
 cd portfolio-dimasaurus
 npm install
 npm run dev
