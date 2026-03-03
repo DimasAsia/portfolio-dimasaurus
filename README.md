@@ -35,14 +35,23 @@ This repository contains my **professional engineering portfolio**, showcasing *
 
 ## 📂 Repository Structure
 portfolio-dimasaurus/
+
 ├── public/
+
 │ └── img/ # Architecture & dashboard images
+
 ├── src/
+
 │ ├── app/ # Next.js app router
+
 │ ├── components/ # UI & Markdown renderer
+
 │ └── styles/ # Global styles
+
 ├── tailwind.config.js
+
 ├── package.json
+
 └── README.md
 
 
